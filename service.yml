@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gpt-hf-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    # change the host to your desired domain or external IP
+    - host: gpt.167.172.14.0.sslip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gpt-hf-service
+                port:
+                  number: 8000
