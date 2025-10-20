@@ -1,0 +1,44 @@
+docker run --rm -v "C:\Users\wangw\OneDrive\Desktop\NUSISS AI\Integrating and deploying AI solutions\Workshop\LLMSecOps-Workshop":/project zegl/kube-score:v1.17.0 score /project/deployment.yml
+apps/v1/Deployment gpt-huggingface                                            💥
+    [CRITICAL] Container Image Tag
+        · gptcontainer -> Image with latest tag
+            Using a fixed tag is recommended to avoid accidental upgrades
+    [CRITICAL] Container Resources
+        · gptcontainer -> CPU limit is not set
+            Resource limits are recommended to avoid resource DDOS. Set
+            resources.limits.cpu
+        · gptcontainer -> Memory limit is not set
+            Resource limits are recommended to avoid resource DDOS. Set
+            resources.limits.memory
+        · gptcontainer -> CPU request is not set
+            Resource requests are recommended to make sure that the application
+            can start and run without crashing. Set resources.requests.cpu
+        · gptcontainer -> Memory request is not set
+            Resource requests are recommended to make sure that the application
+            can start and run without crashing. Set resources.requests.memory
+    [CRITICAL] Container Ephemeral Storage Request and Limit
+        · gptcontainer -> Ephemeral Storage limit is not set
+            Resource limits are recommended to avoid resource DDOS. Set
+            resources.limits.ephemeral-storage
+    [CRITICAL] Pod NetworkPolicy
+        · The pod does not have a matching NetworkPolicy
+            Create a NetworkPolicy that targets this pod to control who/what
+            can communicate with this pod. Note, this feature needs to be
+            supported by the CNI implementation used in the Kubernetes cluster
+            to have an effect.
+    [CRITICAL] Container Security Context User Group ID
+        · gptcontainer -> Container has no configured security context
+            Set securityContext to run the container in a more secure context.
+    [CRITICAL] Container Security Context ReadOnlyRootFilesystem
+        · gptcontainer -> Container has no configured security context
+            Set securityContext to run the container in a more secure context.
+    [CRITICAL] Deployment has PodDisruptionBudget
+        · No matching PodDisruptionBudget was found
+            It's recommended to define a PodDisruptionBudget to avoid
+            unexpected downtime during Kubernetes maintenance operations, such
+            as when draining a node.
+    [WARNING] Deployment has host PodAntiAffinity
+        · Deployment does not have a host podAntiAffinity set
+            It's recommended to set a podAntiAffinity that stops multiple pods
+            from a deployment from being scheduled on the same node. This
+            increases availability in case the node becomes unavailable.
